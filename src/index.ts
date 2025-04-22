@@ -23,6 +23,8 @@ export default plugin(({ matchUtilities, theme, addBase }) => {
     "shadow",
   ];
 
+  // Trick to making unclamped colors work:
+  // https://github.com/ardov/hdr-web
   addBase({
     "html::after": {
       background:
@@ -85,7 +87,7 @@ export default plugin(({ matchUtilities, theme, addBase }) => {
       );
     }
 
-    matchUtilities({ [`${utilityType}-super`]: utility(50) } as any, {
+    matchUtilities({ [`${utilityType}-super`]: utility(100) } as any, {
       values: theme("colors"),
     });
   });
