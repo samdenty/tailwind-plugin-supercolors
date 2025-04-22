@@ -3,7 +3,7 @@ import plugin from "tailwindcss/plugin";
 function transformColor(color: string, strength: number) {
   const percent = `${strength * 3.5}%`;
 
-  return `color(from ${color} display-p3 calc(r*${percent}) calc(g*${percent}) calc(b*${percent}))`;
+  return `color(from ${color} display-p3 calc(${percent}*r) calc(${percent}*g) calc(${percent}*b))`;
 }
 
 export default plugin(({ matchUtilities, theme, addBase }) => {
