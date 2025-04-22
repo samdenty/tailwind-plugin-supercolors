@@ -36,3 +36,4 @@ pnpm-debug.log*
 
 # Tailwind compiled output
 example/output.css
+.vercel
