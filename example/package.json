@@ -1,0 +1,17 @@
+{
+  "name": "tailwind-plugin-superwhite-example",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Example for tailwind-plugin-superwhite",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.4"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.4",
+    "vite": "^6.3.2"
+  }
+}

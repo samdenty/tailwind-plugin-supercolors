@@ -1,0 +1,35 @@
+{
+  "name": "tailwind-plugin-supercolors",
+  "version": "1.0.0",
+  "description": "Tailwind plugin that adds a super- prefix to color utilities",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rm -rf dist > /dev/null 2>&1; tsc -b",
+    "prepublishOnly": "yarn build",
+    "lint": "biome check",
+    "lint:fix": "pnpm lint --write"
+  },
+  "keywords": [
+    "tailwindcss",
+    "tailwind",
+    "plugin",
+    "colors"
+  ],
+  "author": "Sam Denty <samddenty@gmail.com> (http://samdenty.com/)",
+  "license": "MIT",
+  "packageManager": "pnpm@10.7.1",
+  "peerDependencies": {
+    "tailwindcss": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samdenty/tailwind-plugin-supercolors.git"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3"
+  }
+}
