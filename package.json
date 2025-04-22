@@ -7,6 +7,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "vite",
     "build": "rm -rf dist > /dev/null 2>&1; tsc -b",
     "prepublishOnly": "pnpm build",
     "lint": "biome check",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "tailwindcss": "^4.1.4",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@tailwindcss/vite": "^4.1.4",
+    "vite": "^6.3.2"
   }
 }

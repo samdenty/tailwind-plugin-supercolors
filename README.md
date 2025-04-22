@@ -1,4 +1,8 @@
-# Tailwind Plugin Super Colors
+# `tailwind-plugin-supercolors`
+
+[![npm version](https://img.shields.io/npm/v/tailwind-plugin-supercolors.svg?style=flat-square)](https://www.npmjs.com/package/tailwind-plugin-supercolors)
+[![npm downloads](https://img.shields.io/npm/dm/tailwind-plugin-supercolors.svg?style=flat-square)](https://www.npmjs.com/package/tailwind-plugin-supercolors)
+[![Demo](https://img.shields.io/badge/StackBlitz-Demo-blue.svg?style=flat-square)](https://stackblitz.com/~/github.com/samdenty/tailwind-plugin-supercolors?file=index.html)
 
 A Tailwind CSS plugin that adds a `super-` prefix to all color utility classes.
 
