@@ -31,7 +31,7 @@ export default plugin(({ matchUtilities, theme, addBase }) => {
       width: "1px",
       display: "block",
       content: `''`,
-      opacity: 0.001,
+      opacity: 0.01,
     },
   } as any);
 
@@ -85,7 +85,7 @@ export default plugin(({ matchUtilities, theme, addBase }) => {
       );
     }
 
-    matchUtilities({ [`${utilityType}-super`]: utility(100) } as any, {
+    matchUtilities({ [`${utilityType}-super`]: utility(50) } as any, {
       values: theme("colors"),
     });
   });
