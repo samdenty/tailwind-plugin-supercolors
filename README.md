@@ -34,7 +34,7 @@ Add the plugin to your `tailwind.config.js` file:
 ```js
 module.exports = {
   plugins: [
-    require('tailwind-plugin-superwhite'),
+    require('tailwind-plugin-supercolors'),
     // ...other plugins
   ],
 }
