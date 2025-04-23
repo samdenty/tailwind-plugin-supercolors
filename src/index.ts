@@ -1,7 +1,7 @@
 import plugin from "tailwindcss/plugin";
 
 function transformColor(color: string, strength: number) {
-  const percent = strength / 50;
+  const percent = strength / (100 / 1.7);
 
   return `color(from ${color} srgb calc(r * ${percent}) calc(g * ${percent}) calc(b * ${percent}))`;
 }
