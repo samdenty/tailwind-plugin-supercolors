@@ -1,7 +1,7 @@
 import plugin from "tailwindcss/plugin";
 
 function transformColor(color: string, strength: number) {
-  const percent = strength / (100 / 1.7);
+  const percent = strength / (100 / 1.7 / 2);
 
   return `color(from ${color} srgb calc(r * ${percent}) calc(g * ${percent}) calc(b * ${percent}))`;
 }
@@ -82,7 +82,7 @@ export default plugin(({ matchUtilities, theme, addBase }) => {
       }
     };
 
-    for (let strength = 0; strength < 100; strength++) {
+    for (let strength = 0; strength <= 100; strength++) {
       // Register a new utility with the 'super-' prefix
       matchUtilities(
         { [`${utilityType}-super-${strength}`]: utility(strength) } as any,
@@ -90,7 +90,7 @@ export default plugin(({ matchUtilities, theme, addBase }) => {
       );
     }
 
-    matchUtilities({ [`${utilityType}-super`]: utility(100) } as any, {
+    matchUtilities({ [`${utilityType}-super`]: utility(50) } as any, {
       values: theme("colors"),
     });
   });
