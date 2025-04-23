@@ -1,9 +1,9 @@
 import plugin from "tailwindcss/plugin";
 
 function transformColor(color: string, strength: number) {
-  const percent = `${strength * 3.5}%`;
+  const percent = strength / 50;
 
-  return `color(from ${color} display-p3 calc(${percent}*r) calc(${percent}*g) calc(${percent}*b))`;
+  return `color(from ${color} srgb calc(r * ${percent}) calc(g * ${percent}) calc(b * ${percent}))`;
 }
 
 export default plugin(({ matchUtilities, theme, addBase }) => {
@@ -27,7 +27,7 @@ export default plugin(({ matchUtilities, theme, addBase }) => {
   // https://github.com/ardov/hdr-web
   addBase({
     "html::after": {
-      position: "fixed",
+      position: "absolute",
       top: 0,
       left: 0,
       background:
