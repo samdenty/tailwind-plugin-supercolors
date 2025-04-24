@@ -1,6 +1,6 @@
 {
   "name": "tailwind-plugin-supercolors",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Tailwind plugin that adds a super- prefix to color utilities",
   "main": "dist/index.js",
   "sideEffects": true,

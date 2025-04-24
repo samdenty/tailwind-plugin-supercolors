@@ -8,7 +8,6 @@ function handleElement(element: HTMLElement) {
   container.style.position = "absolute";
   container.style.width = "100%";
   container.style.height = "100%";
-  container.style.zIndex = "999999999999999";
   container.style.pointerEvents = "none";
 
   if (!isMobileSafari) {
@@ -32,7 +31,7 @@ function handleElement(element: HTMLElement) {
   video.style.width = "100%";
   video.style.height = "100%";
 
-  element.prepend(container);
+  element.appendChild(container);
 }
 
 if (typeof window !== "undefined") {
