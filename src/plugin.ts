@@ -56,11 +56,11 @@ export const tailwindPlugin = plugin(
 
         if (utilityType === "bg") {
           return {
-            "body.super-enabled &": {
+            "body.tailwind-plugin-supercolors &": {
               ...superUtility(strength ?? 100),
               "background-color": value,
             },
-            "body:not(.super-enabled) &": {
+            "body:not(.tailwind-plugin-supercolors) &": {
               "background-color": colorValue,
             },
           };

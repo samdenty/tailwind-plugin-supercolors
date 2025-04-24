@@ -47,7 +47,7 @@ if (typeof window !== "undefined") {
   });
 
   function listen() {
-    document.body.classList.add("super-enabled");
+    document.body.classList.add("tailwind-plugin-supercolors");
 
     document
       .querySelectorAll(
