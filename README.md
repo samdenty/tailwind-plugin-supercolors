@@ -18,6 +18,18 @@ pnpm add tailwind-plugin-supercolors
 
 ## Usage
 
+## Runtime
+
+This plugin has an optional runtime to enable a JS video powered brighter range than what is possible with CSS alone.
+
+(Recommended) To enable the runtime, simply import the plugin:
+
+```js
+import 'tailwind-plugin-supercolors';
+```
+
+Then setup tailwind:
+
 ### Tailwind v4
 
 Add the plugin to your `styles.css` file:
@@ -53,8 +65,25 @@ You can now use:
 ```
 
 You can control the strength of the color by adding a number to the end of the class name:
+
 ```html
 <div class="bg-super-50-red-500 text-super-blue-700">Hello World</div>
 <div class="bg-super-25-red-50 text-super-blue-70">Hello World</div>
 <div class="bg-super-5-red-100 text-super-blue-700">Hello World</div>
+```
+
+You can also make any element brighter by adding the `super` class:
+
+```html
+<div class="super">
+  <img src="https://placehold.co/500x100">
+</div>
+```
+
+This could be paired with a `<canvas>` element:
+
+```html
+<div class="super">
+  <canvas id="my-game"></canvas>
+</div>
 ```
