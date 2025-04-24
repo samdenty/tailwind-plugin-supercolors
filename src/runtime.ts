@@ -9,6 +9,8 @@ function handleElement(element: HTMLElement) {
   container.style.width = "100%";
   container.style.height = "100%";
   container.style.zIndex = "999999999999999";
+  container.style.pointerEvents = "none";
+
   if (!isMobileSafari) {
     container.style.backgroundColor = "color(from #fff srgb 8 8 8)";
     container.style.mixBlendMode = "multiply";
