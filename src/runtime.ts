@@ -9,10 +9,12 @@ function handleElement(element: HTMLElement) {
   container.style.width = "100%";
   container.style.height = "100%";
   container.style.pointerEvents = "none";
+  container.style.mixBlendMode = "multiply";
+  container.style.zIndex = "999999999999999";
+  container.style.top = "0";
 
   if (!isMobileSafari) {
     container.style.backgroundColor = "color(from #fff srgb 8 8 8)";
-    container.style.mixBlendMode = "multiply";
   }
 
   const video = document.createElement("video");
@@ -31,7 +33,7 @@ function handleElement(element: HTMLElement) {
   video.style.width = "100%";
   video.style.height = "100%";
 
-  element.appendChild(container);
+  element.prepend(container);
 }
 
 if (typeof window !== "undefined") {
