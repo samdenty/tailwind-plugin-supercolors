@@ -29,6 +29,7 @@
       width: 100%;
       border-radius: 0.5rem;
       overflow: hidden;
+      position: relative;
     }
     
     .comparison {
@@ -93,8 +94,10 @@
         
         <div>
           <div class="comparison-label">HDR Image</div>
-          <div id="hdr-image" class="image-container super">
-            <img src="https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sunset" class="w-full">
+          <div class="image-container">
+            <div id="hdr-image" class="super">
+              <img src="https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sunset" class="w-full">
+            </div>
           </div>
         </div>
       </div>
@@ -107,23 +110,26 @@
       const strengthValue = document.getElementById('strength-value');
       const hdrImage = document.getElementById('hdr-image');
       
-      slider.addEventListener('input', function() {
-        const value = this.value;
+      function updateHDREffect() {
+        const value = slider.value;
         strengthValue.textContent = value;
         
-        // Remove previous super-X class
-        for (let i = 0; i <= 100; i++) {
-          hdrImage.classList.remove(`super-${i}`);
-        }
+        // First clean up all classes
+        hdrImage.className = ''; // Remove all classes
         
-        // Remove the default super class if strength is not 100
-        if (value < 100) {
-          hdrImage.classList.remove('super');
-          hdrImage.classList.add(`super-${value}`);
-        } else {
+        // Then add the appropriate class based on slider value
+        if (value == 100) {
           hdrImage.classList.add('super');
+        } else {
+          hdrImage.classList.add(`super-${value}`);
         }
-      });
+      }
+      
+      // Initial setup
+      updateHDREffect();
+      
+      // Listen for changes
+      slider.addEventListener('input', updateHDREffect);
     });
   </script>
 </body>

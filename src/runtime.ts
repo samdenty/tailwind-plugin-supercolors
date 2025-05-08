@@ -3,6 +3,11 @@ const isMobileSafari =
   (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i));
 
 function handleElement(element: HTMLElement) {
+  // Check if element already has the container
+  if (element.querySelector('.tailwind-plugin-supercolors')) {
+    return;
+  }
+  
   const container = document.createElement("div");
   container.className = "tailwind-plugin-supercolors";
   container.style.position = "absolute";
@@ -34,14 +39,42 @@ function handleElement(element: HTMLElement) {
   video.style.height = "100%";
 
   element.prepend(container);
+  
+  // Ensure video plays
+  video.play().catch(err => {
+    console.warn("Autoplay prevented:", err);
+  });
 }
 
 if (typeof window !== "undefined") {
   const observer = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
+      // Check for added nodes
       for (const node of mutation.addedNodes) {
-        if (node instanceof HTMLElement && node.classList.contains("super")) {
-          handleElement(node);
+        if (node instanceof HTMLElement) {
+          // Check if the node itself has the super class
+          if (node.classList.contains("super") || 
+              Array.from(node.classList).some(cls => cls.startsWith("super-"))) {
+            handleElement(node);
+          }
+          
+          // Also check children of added nodes
+          node.querySelectorAll(".super, [class*='super-']").forEach(el => {
+            if (el instanceof HTMLElement) {
+              handleElement(el);
+            }
+          });
+        }
+      }
+      
+      // Also check for attribute changes
+      if (mutation.type === 'attributes' && 
+          mutation.attributeName === 'class' &&
+          mutation.target instanceof HTMLElement) {
+        const target = mutation.target as HTMLElement;
+        if (target.classList.contains("super") || 
+            Array.from(target.classList).some(cls => cls.startsWith("super-"))) {
+          handleElement(target);
         }
       }
     }
@@ -50,31 +83,35 @@ if (typeof window !== "undefined") {
   function listen() {
     document.body.classList.add("tailwind-plugin-supercolors");
 
-    document
-      .querySelectorAll(
-        [
-          ".super",
-          ...Array(100)
+    // Initial scan for elements with super classes
+    const superElements = document.querySelectorAll(
+      [
+        ".super",
+        ...Array(101)
             .fill(0)
-            .map((_, i) => `.super-${i + 1}`),
-          "[class*='bg-super-']",
-        ].join(",")
-      )
-      .forEach((node) => {
-        if (node instanceof HTMLElement) {
-          handleElement(node);
-        }
-      });
+            .map((_, i) => `.super-${i}`),
+        "[class*='bg-super-']",
+      ].join(",")
+    );
+    
+    superElements.forEach((node) => {
+      if (node instanceof HTMLElement) {
+        handleElement(node);
+      }
+    });
 
+    // Start observing for changes
     observer.observe(document.body, {
       attributes: true,
       subtree: true,
       childList: true,
     });
+    
+    console.log("Super colors runtime initialized with", superElements.length, "elements");
   }
 
-  if (!document.body) {
-    setTimeout(listen);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', listen);
   } else {
     listen();
   }
