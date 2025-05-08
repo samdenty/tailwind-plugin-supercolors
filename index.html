@@ -6,8 +6,45 @@
   <title>Tailwind Super Color Plugin Example</title>
   <link href="./index.css" rel="stylesheet">
   <script type="module" src="./src"></script>
+  <style>
+    .hdr-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .slider-container label {
+      margin-bottom: 0.5rem;
+    }
+    
+    .image-container {
+      width: 100%;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .comparison-label {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
-<body class="bg-gray-100  p-8">
+<body class="bg-gray-100 p-8">
   <div class="max-w-md mx-auto bg-white rounded-lg shadow p-6">
     <h1 class="text-2xl font-bold text-gray-800 mb-4">Regular Tailwind Colors</h1>
 
@@ -37,6 +74,57 @@
         <img src="https://placehold.co/500x100">
       </div>
     </div>
+    
+    <div class="hdr-demo">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">HDR Image Demo</h1>
+      
+      <div class="slider-container">
+        <label for="hdr-strength">HDR Effect Strength: <span id="strength-value">100</span>%</label>
+        <input type="range" id="hdr-strength" min="0" max="100" value="100" class="w-full">
+      </div>
+      
+      <div class="comparison">
+        <div>
+          <div class="comparison-label">Standard Image</div>
+          <div class="image-container">
+            <img src="https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sunset" class="w-full">
+          </div>
+        </div>
+        
+        <div>
+          <div class="comparison-label">HDR Image</div>
+          <div id="hdr-image" class="image-container super">
+            <img src="https://images.pexels.com/photos/1535162/pexels-photo-1535162.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sunset" class="w-full">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.getElementById('hdr-strength');
+      const strengthValue = document.getElementById('strength-value');
+      const hdrImage = document.getElementById('hdr-image');
+      
+      slider.addEventListener('input', function() {
+        const value = this.value;
+        strengthValue.textContent = value;
+        
+        // Remove previous super-X class
+        for (let i = 0; i <= 100; i++) {
+          hdrImage.classList.remove(`super-${i}`);
+        }
+        
+        // Remove the default super class if strength is not 100
+        if (value < 100) {
+          hdrImage.classList.remove('super');
+          hdrImage.classList.add(`super-${value}`);
+        } else {
+          hdrImage.classList.add('super');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
