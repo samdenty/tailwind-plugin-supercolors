@@ -1,4 +1,4 @@
-# `tailwind-plugin-supercolors`
+# `tailwind-plugin-supercolors2`
 
 [![npm version](https://img.shields.io/npm/v/tailwind-plugin-supercolors.svg?style=flat-square)](https://www.npmjs.com/package/tailwind-plugin-supercolors)
 [![npm downloads](https://img.shields.io/npm/dm/tailwind-plugin-supercolors.svg?style=flat-square)](https://www.npmjs.com/package/tailwind-plugin-supercolors)
